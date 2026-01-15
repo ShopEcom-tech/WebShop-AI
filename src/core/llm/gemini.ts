@@ -24,7 +24,7 @@ export class GeminiClient {
     this.client = new GoogleGenerativeAI(
       apiKey || process.env.GOOGLE_AI_API_KEY || ''
     );
-    this.model = this.client.getGenerativeModel({ model: 'gemini-pro' });
+    this.model = this.client.getGenerativeModel({ model: 'gemini-2.0-flash' });
   }
 
   /**

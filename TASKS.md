@@ -1,31 +1,29 @@
-# WebShop-AI - Task Tracker
+# WebShop-AI Enterprise - Tasks
 
-## Phase 1: Foundation
-- [/] Initializing project structure <!-- id: 1 -->
-  - [ ] Setup Node.js + TypeScript <!-- id: 1.1 -->
-  - [ ] Create folder structure <!-- id: 1.2 -->
-  - [ ] Configure ESLint, Prettier <!-- id: 1.3 -->
-  - [ ] Setup package.json dependencies <!-- id: 1.4 -->
-- [ ] Core LLM Connection <!-- id: 2 -->
-  - [ ] Claude API wrapper <!-- id: 2.1 -->
-  - [ ] Gemini API wrapper <!-- id: 2.2 -->
-  - [ ] LLM Router (failover) <!-- id: 2.3 -->
+## Phase 1: Infrastructure (Semaine 1-2)
+- [/] Setup project structure <!-- id: 1 -->
+  - [/] Create Rust API Gateway <!-- id: 1.1 -->
+  - [ ] Create Python Agent Framework <!-- id: 1.2 -->
+  - [ ] Docker compose setup <!-- id: 1.3 -->
+- [ ] Core services <!-- id: 2 -->
+  - [ ] PostgreSQL setup <!-- id: 2.1 -->
+  - [ ] Redis setup <!-- id: 2.2 -->
+  - [ ] Qdrant vector DB <!-- id: 2.3 -->
 
-## Phase 2: Chatbot MVP
-- [ ] Chatbot Agent <!-- id: 3 -->
-  - [ ] Base agent structure <!-- id: 3.1 -->
-  - [ ] Prompt system <!-- id: 3.2 -->
-  - [ ] Conversation memory <!-- id: 3.3 -->
-  - [ ] API endpoint /chat <!-- id: 3.4 -->
-- [ ] Widget Frontend <!-- id: 4 -->
-  - [ ] Embeddable chat widget <!-- id: 4.1 -->
-  - [ ] Styling <!-- id: 4.2 -->
+## Phase 2: Core Agents (Semaine 3-5)
+- [ ] MARIE - Chatbot Support <!-- id: 3 -->
+- [ ] HUGO - Content Generator <!-- id: 4 -->
+- [ ] LangGraph Orchestrator <!-- id: 5 -->
 
-## Phase 3: Content Generator
-- [ ] Content Agent <!-- id: 5 -->
+## Phase 3: Advanced Agents (Semaine 6-8)
+- [ ] JOHN - Social Media Manager <!-- id: 6 -->
+- [ ] LUCAS - Quote Generator <!-- id: 7 -->
+- [ ] EMMA - Email Responder <!-- id: 8 -->
 
-## Phase 4: Quote Generator
-- [ ] Quote Agent <!-- id: 6 -->
+## Phase 4: Analytics & Dashboard (Semaine 9-10)
+- [ ] NOAH - Analytics Agent <!-- id: 9 -->
+- [ ] React Dashboard <!-- id: 10 -->
 
-## Phase 5: Integration
-- [ ] Integrate with Web Shop <!-- id: 7 -->
+## Phase 5: Polish & Deploy (Semaine 11-12)
+- [ ] Integration Web Shop <!-- id: 11 -->
+- [ ] Documentation <!-- id: 12 -->

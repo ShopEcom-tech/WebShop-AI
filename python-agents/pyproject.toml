@@ -1,0 +1,58 @@
+[project]
+name = "webshop-ai-agents"
+version = "0.1.0"
+description = "AI Agent Orchestrator for WebShop - LangGraph based multi-agent system"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "WebShop Team"}
+]
+
+dependencies = [
+    # Web framework
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    
+    # LLM & AI
+    "langchain>=0.1.0",
+    "langgraph>=0.0.20",
+    "anthropic>=0.18.0",
+    "google-generativeai>=0.3.0",
+    
+    # Database & Cache
+    "redis>=5.0.0",
+    "sqlalchemy>=2.0.0",
+    "asyncpg>=0.29.0",
+    
+    # Vector store
+    "qdrant-client>=1.7.0",
+    
+    # Utils
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.26.0",
+    
+    # PDF generation
+    "reportlab>=4.0.0",
+    "weasyprint>=60.0",
+    
+    # Email
+    "aiosmtplib>=3.0.0",
+    
+    # Logging
+    "structlog>=24.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "black>=24.1.0",
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

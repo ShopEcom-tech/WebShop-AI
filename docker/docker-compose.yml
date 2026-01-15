@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # ===========================================
+  # RUST API GATEWAY
+  # ===========================================
+  gateway:
+    build:
+      context: ../rust-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+      - AGENT_URL=http://agents:8000
+      - JWT_SECRET=${JWT_SECRET:-super-secret-dev-key}
+      - RUST_LOG=info,actix_web=debug
+    depends_on:
+      - agents
+      - redis
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+  # ===========================================
+  # PYTHON AGENT ORCHESTRATOR
+  # ===========================================
+  agents:
+    build:
+      context: ../python-agents
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://webshop:webshop@postgres:5432/webshop_ai
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ../python-agents/data:/app/data
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+  # ===========================================
+  # DATABASES
+  # ===========================================
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=webshop
+      - POSTGRES_PASSWORD=webshop
+      - POSTGRES_DB=webshop_ai
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+  # ===========================================
+  # VECTOR DATABASE (Qdrant)
+  # ===========================================
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+  # ===========================================
+  # FRONTEND (Development)
+  # ===========================================
+  frontend:
+    build:
+      context: ../frontend/dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8080
+    depends_on:
+      - gateway
+    networks:
+      - webshop-ai
+    restart: unless-stopped
+
+networks:
+  webshop-ai:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  qdrant_data:
