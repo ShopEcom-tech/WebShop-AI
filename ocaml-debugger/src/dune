@@ -1,0 +1,3 @@
+(library
+ (name webshop_ai_debugger)
+ (libraries yojson unix))
