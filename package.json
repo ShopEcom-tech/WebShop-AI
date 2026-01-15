@@ -1,0 +1,38 @@
+{
+  "name": "webshop-ai",
+  "version": "1.0.0",
+  "description": "Suite d'agents IA pour automatiser et optimiser Web Shop",
+  "main": "dist/api/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "dev": "npx tsx watch src/api/server.ts",
+    "start": "node dist/api/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShopEcom-tech/WebShop-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShopEcom-tech/WebShop-AI/issues"
+  },
+  "homepage": "https://github.com/ShopEcom-tech/WebShop-AI#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@fastify/cors": "^11.2.0",
+    "@google/generative-ai": "^0.24.1",
+    "@types/node": "^25.0.9",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
+  }
+}
